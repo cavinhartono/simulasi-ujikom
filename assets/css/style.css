@@ -47,8 +47,13 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--white-primary);
+  transition: 0.3s;
   z-index: 5;
+}
+
+.header.active {
+  background: var(--black-primary);
+  box-shadow: var(--boxShadow-secondary);
 }
 
 .header_logo .title {
@@ -92,6 +97,12 @@ section {
   position: relative;
   gap: 8px;
   display: flex;
+}
+
+svg {
+  width: 24px;
+  height: 24px;
+  color: var(--black-primary);
 }
 
 .homepage {
