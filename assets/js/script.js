@@ -2,7 +2,7 @@ var sections = document.querySelectorAll("section[id]");
 
 function scrollHeader() {
   const header = document.querySelector(".header");
-  if (this.scrollY >= 50) header.classList.add("active");
+  if (this.scrollY >= 650) header.classList.add("active");
   else header.classList.remove("active");
 }
 

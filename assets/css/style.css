@@ -10,6 +10,10 @@
   --boxShadow-secondary: 0px 8px 45px rgba(34, 34, 34, 0.1);
   --primary-color: #ffb800;
   --secondary-color: #f00;
+  --third-color: #;
+  --fourth-color: #;
+  --fifth-color: #;
+  --sixth-color: #;
   --font-small: 18px;
   --font-reguler: 20px;
   --font-medium: 32px;
@@ -49,6 +53,7 @@ section {
   align-items: center;
   transition: 0.3s;
   z-index: 5;
+  background: var(--white-primary);
 }
 
 .header.active {
@@ -56,9 +61,28 @@ section {
   box-shadow: var(--boxShadow-secondary);
 }
 
+.header.active .nav .item.active .link {
+  color: var(--white-primary);
+  opacity: 1;
+}
+
+.header.active .nav .item .link {
+  color: var(--white-primary);
+  opacity: 0.75;
+}
+
+.header.active .nav .item.active .link::before {
+  background: var(--white-primary);
+}
+
+.header.active .header_logo .title {
+  color: var(--white-primary);
+}
+
 .header_logo .title {
   font-weight: 700;
   font-style: italic;
+  color: var(--black-primary);
 }
 
 .header .nav {
@@ -99,10 +123,19 @@ section {
   display: flex;
 }
 
+.header.active .action svg {
+  color: var(--white-primary);
+  opacity: 0.75;
+}
+
+.header.active .action svg:hover {
+  opacity: 1;
+}
+
 svg {
   width: 24px;
   height: 24px;
-  color: var(--black-primary);
+  color: var(--black-secondary);
 }
 
 .homepage {
@@ -126,6 +159,12 @@ svg {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  transition: 0.3s;
+}
+
+.social_media .item:hover svg,
+.contact_info .item:hover svg {
+  color: var(--black-primary);
 }
 
 .center_content {
@@ -467,7 +506,6 @@ svg {
 .footer .contact {
   position: relative;
   width: 1200px;
-  height: 400px;
   padding: 60px;
   display: flex;
   justify-content: space-between;
@@ -480,6 +518,25 @@ svg {
 .contact_info .item {
   list-style: none;
   margin-top: 8px;
+}
+
+.contact_info .item .link {
+  text-decoration: none;
+  position: relative;
+  gap: 15px;
+  display: flex;
+  align-items: center;
+  color: var(--black-secondary);
+  transition: 0.3s;
+}
+
+.contact_info .item:hover .link {
+  color: var(--black-primary);
+}
+
+.contact_info .item .link .icon {
+  display: flex;
+  align-items: center;
 }
 
 .form {
@@ -528,7 +585,8 @@ svg {
 }
 
 .footer_text {
-  margin: 15px 0 20px;
+  position: absolute;
+  bottom: 25px;
   color: var(--white-primary);
 }
 
