@@ -1,0 +1,19 @@
+:root {
+  --black-primary: #222;
+  --black-secondary: rgba(34, 34, 34, 0.75);
+  --white-primary: #fff;
+  --white-secondary: #fafafa;
+  --boxShadow-primary: -8px -8px 45px rgba(255, 255, 255, 1),
+    8px 8px 45px rgba(34, 34, 34, 0.1);
+  --boxShadow-secondary: 0px 8px 45px rgba(34, 34, 34, 0.1);
+  --primary-color: #ffb800;
+  --secondary-color: #f00;
+  --third-color: #;
+  --fourth-color: #;
+  --fifth-color: #;
+  --sixth-color: #;
+  --font-small: 18px;
+  --font-reguler: 20px;
+  --font-medium: 32px;
+  --font-large: 48px;
+}
