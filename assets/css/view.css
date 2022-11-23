@@ -15,6 +15,19 @@ section {
   width: 100%;
 }
 
+.figure {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.figure .line {
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: #222;
+}
+
 .view {
   position: relative;
   padding: 100px;
@@ -76,6 +89,10 @@ section {
   align-items: center;
 }
 
+.figure_caption .product .right_side .rating svg {
+  color: var(--primary-color);
+}
+
 .figure_caption .action {
   position: relative;
   width: 300px;
@@ -124,6 +141,81 @@ section {
   font-weight: 400;
 }
 
+.info {
+  position: relative;
+  width: 100%;
+  padding: 100px;
+  gap: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info .review {
+  position: relative;
+  max-width: 600px;
+}
+
+.info .review .card {
+  position: relative;
+  max-width: 650px;
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info .review .card .item {
+  list-style: none;
+  width: 100%;
+  padding: 25px 40px;
+  gap: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--white-primary);
+  box-shadow: var(--boxShadow-primary);
+}
+
+.info .review .card .item .photo {
+  max-width: 80px;
+  height: auto;
+  border-radius: 100%;
+}
+
+.info .review .card .item .rating {
+  display: flex;
+  gap: 8px;
+}
+
+.info .review .card .item .rating svg {
+  color: var(--primary-color);
+}
+
+.info .review .card .item .review_info .heading {
+  font-size: var(--font-small);
+  font-weight: 400;
+  color: var(--black-primary);
+}
+
+.info .review .card .item .review_info .text {
+  margin-top: 8px;
+  font-size: 1em;
+  font-weight: 400;
+  text-align: justify;
+  color: var(--black-secondary);
+}
+
+.info .product_desc {
+  max-width: 600px;
+  padding: 20px;
+}
+
+.info .product_desc .description .text {
+  margin: 15px 0;
+  text-align: justify;
+  font-size: var(--font-small);
+  font-weight: 400;
+}
+
 .footer .contact {
   position: relative;
   width: 1200px;
@@ -145,6 +237,7 @@ section {
 
 .form .field.two {
   display: flex;
+  align-items: center;
   width: 150px;
 }
 
@@ -161,6 +254,10 @@ section {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 4px;
+}
+
+.form .field.two svg {
+  color: var(--primary-color);
 }
 
 .form .btn {
