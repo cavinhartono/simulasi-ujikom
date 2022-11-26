@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
@@ -36,7 +37,8 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($info)) {
-            return redirect('/')->with('success', 'Login is success!');
+            $firstName = explode(' ', trim(Auth::user()->name))[0];
+            return redirect('/')->with('success', "Welcome, $firstName");
         } else {
             return redirect('/auth')->withErrors('Email dan Password tidak sesuai');
         }
@@ -50,6 +52,9 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        Session::flash('name', $request->name);
+        Session::flash('email', $request->email);
+        Session::flash('password', $request->password);
         $request->validate(
             [
                 'name' => 'required',
@@ -68,7 +73,7 @@ class AuthController extends Controller
         $createAuth = [
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
         ];
 
         User::create($createAuth);
@@ -79,7 +84,8 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($info)) {
-            return redirect('/')->with('success', 'Register is success!');
+            $firstName = explode(' ', trim(Auth::user()->name))[0];
+            return redirect('/')->with('success', "Welcome, $firstName");
         } else {
             return redirect('/auth')->withErrors('Email dan Password harus disesuaikan');
         }

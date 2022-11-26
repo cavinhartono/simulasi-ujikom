@@ -25,9 +25,9 @@ Login
       <form action="/auth/login" method="POST">
         @csrf
         <h3>Sign In</h3>
-        <input type="text" placeholder="Username" name="email" value="{{ Session::get('email') }}">
-        <input type="password" placeholder="Password" name="password">
-        <input type="submit" value="Sign In">
+        <input type="text" placeholder="Email" name="email" value="{{ Session::get('email') }}">
+        <input type="password" placeholder="Password" name="password" value="{{ Session::get('password') }}">
+        <input type="submit" value="Sign In" name="submit">
         <a href="#" class="forget">Forget Password</a>
       </form>
     </div>
@@ -35,11 +35,11 @@ Login
       <form action="/auth/register" method="POST">
         @csrf
         <h3>Sign Up</h3>
-        <input type="text" placeholder="Name" name="username">
+        <input type="text" placeholder="Name" name="name">
         <input type="text" placeholder="Email" name="email">
         <input type="password" placeholder="Password" name="password">
         <input type="password" placeholder="Confirm Password" name="password">
-        <input type="submit" value="Register">
+        <input type="submit" value="Register" name="submit">
       </form>
     </div>
   </div>

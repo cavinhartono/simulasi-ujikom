@@ -47,6 +47,11 @@ Homepage
   </ul>
 </header>
 <section class="homepage">
+  @if (Session::get('success'))
+  <div class="greating">
+    <span class="message">{{ Session::get('success') }}</span>
+  </div>
+  @endif
   <div class="content">
     <div class="center_content">
       <div class="figure_caption">
@@ -235,42 +240,58 @@ Homepage
     <p class="text small">© Furnitur | All Right Received</p>
   </div>
 </footer>
+@if (Auth::user()->isAdmin)
+<button class="isAdmin">
+  <span class="icon">Info</span>
+</button>
 <div class="forAdmin">
-  <button class="btn">
-    <span class="icon">Info</span>
-  </button>
-  <div class="info_modal">
-    <table class="table">
-      <thead>
-        <th>ID</th>
-        <th>Category</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Desc</th>
-        <th>Action</th>
-      </thead>
-      <tbody>
-        @forelse ($products as $product)
-        <tr>
-          <td>$product->id</td>
-          <td>$product->category->name</td>
-          <td>$product->name</td>
-          <td>$product->desc</td>
-          <td>$product->price</td>
-          <td>
-            <a href="/admin/edit/{ $product->id }">Edit</a>
-            <a href="/admin/delete/{ $product->id }">Delete</a>
-          </td>
-        </tr>
-        @empty
-        <tr>
-          <td>No Data</td>
-        </tr>
-        @endforelse
-      </tbody>
-    </table>
+  <div class="black"></div>
+  <div class="form">
+    <div class="action">
+      <button class="btn" style="border: none;">
+        <span class="icon">Add</span>
+      </button>
+      <button class="close">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="info_modal">
+      <table class="table">
+        <thead style="border-bottom: 1px solid #222;">
+          <tr>
+            <th style="width: 10%;">ID</th>
+            <th style="width: 15%;">Category</th>
+            <th style="width: 20%;">Name</th>
+            <th style="width: 15%;">Price</th>
+            <th style="width: 50%;">Desc</th>
+            <th style="text-align: center;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @forelse ($products as $product)
+          <tr>
+            <td>{{ $product->id }}</td>
+            <td>{{ $product->category->name }}</td>
+            <td>{{ $product->name }}</td>
+            <td>{{ $product->desc }}</td>
+            <td>{{ $product->price }}</td>
+            <td>
+              <a href="/admin/edit/{ $product->id }">Edit</a>
+              <a href="/admin/delete/{ $product->id }">Delete</a>
+            </td>
+          </tr>
+          @empty
+          <tr>
+            <td colspan="6" style="text-align: center;">No Data</td>
+          </tr>
+          @endforelse
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
+@endif
 @endsection
 
 @push('script')
