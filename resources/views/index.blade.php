@@ -9,43 +9,6 @@ Homepage
 @endpush
 
 @section('contents')
-<header class="header">
-  <div class="header_logo">
-    <span class="logo"></span>
-    <h2 class="title">Furnitur</h2>
-  </div>
-  <ul class="nav">
-    <li class="item active"><a href="#home" class="link">home</a></li>
-    <li class="item"><a href="#about" class="link">about</a></li>
-    <li class="item"><a href="#shop" class="link">shop</a></li>
-    <li class="item">
-      <a href="#testimonial" class="link">testimonial</a>
-    </li>
-    <li class="item"><a href="#contact" class="link">contact</a></li>
-  </ul>
-  <ul class="action">
-    <li class="item">
-      <a href="#" class="link">
-        <span class="logo">
-          <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" fill="currentColor" viewBox="0 0 512 512">
-            <path d="M256,48C141.31,48,48,141.31,48,256s93.31,208,208,208,208-93.31,208-208S370.69,48,256,48Zm2,96a72,72,0,1,1-72,72A72,72,0,0,1,258,144Zm-2,288a175.55,175.55,0,0,1-129.18-56.6C135.66,329.62,215.06,320,256,320s120.34,9.62,129.18,55.39A175.52,175.52,0,0,1,256,432Z" />
-          </svg>
-        </span>
-      </a>
-    </li>
-    <li class="item">
-      <a href="#" class="link">
-        <span class="logo">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="auto" height="auto" viewBox="0 0 512 512">
-            <circle cx="176" cy="416" r="32" />
-            <circle cx="400" cy="416" r="32" />
-            <path d="M456.8,120.78A23.92,23.92,0,0,0,438.24,112H133.89l-6.13-34.78A16,16,0,0,0,112,64H48a16,16,0,0,0,0,32H98.58l45.66,258.78A16,16,0,0,0,160,368H416a16,16,0,0,0,0-32H173.42l-5.64-32H409.44A24.07,24.07,0,0,0,433,284.71l28.8-144A24,24,0,0,0,456.8,120.78Z" />
-          </svg>
-        </span>
-      </a>
-    </li>
-  </ul>
-</header>
 <section class="homepage">
   @if (Session::get('success'))
   <div class="greating">
@@ -140,20 +103,26 @@ Homepage
   <div class="content_one">
     <h2 class="heading title">Recent Product</h2>
     <ul class="product">
+      @forelse ($products as $product)
       <li class="item">
-        <a href="#" class="link">
+        <a href="/view/{{ $product->id }}" class="link">
           <div class="img">
-            <img src="assets/img/product-3.jpg" class="photo" />
+            <img src="{{ asset('storage/' . $product->image) }}" class="photo" />
           </div>
           <div class="desc">
             <div class="title">
-              <h2 class="category">Waredore</h2>
-              <h2 class="heading title">Brimnes</h2>
+              <h2 class="category">{{ $product->category->name }}</h2>
+              <h2 class="heading title">{{ $product->name }}</h2>
             </div>
-            <p class="price">IDR 400.000</p>
+            <p class="price">{{ $product->price }}</p>
           </div>
         </a>
       </li>
+      @empty
+      <li class="item">
+        <h2 class="heading">Tidak ada</h2>
+      </li>
+      @endforelse
     </ul>
   </div>
 </section>
@@ -187,113 +156,156 @@ Homepage
     </ul>
   </div>
 </section>
-<footer class="footer">
-  <div class="contact" id="contact">
-    <ul class="contact_info">
-      <div class="figure">
-        <span class="line"></span>
-        <p class="subtitle">Contact Info</p>
-      </div>
-      <li class="item">
-        <a href="#tel:+6282263450127" class="link">
-          <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" fill="currentColor" class="bi bi-phone-fill" viewBox="0 0 16 16">
-              <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z" />
-            </svg>
-          </span>
-          <p class="text">+62 82263450127</p>
-        </a>
-      </li>
-      <li class="item">
-        <a href="mailto:funitur@gmail.com" class="link">
-          <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-              <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
-            </svg>
-          </span>
-          <p class="text">funitur@gmail.com</p>
-        </a>
-      </li>
-      <li class="item">
-        <a href="#" class="link">
-          <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" fill="currentColor" viewBox="0 0 512 512">
-              <path d="M256,32C167.67,32,96,96.51,96,176c0,128,160,304,160,304S416,304,416,176C416,96.51,344.33,32,256,32Zm0,224a64,64,0,1,1,64-64A64.07,64.07,0,0,1,256,256Z" />
-            </svg>
-          </span>
-          <p class="text">Jl. Soeharto-Hatta, Bandung</p>
-        </a>
-      </li>
-    </ul>
-    <form action="" class="form">
-      <div class="field two">
-        <input type="text" name="email" placeholder="Email" />
-        <input type="text" name="username" placeholder="Username" />
-      </div>
-      <div class="field one">
-        <textarea name="message" placeholder="Message"></textarea>
-      </div>
-      <button class="btn">Send</button>
-    </form>
-  </div>
-  <div class="footer_text">
-    <p class="text small">© Furnitur | All Right Received</p>
-  </div>
-</footer>
+@section('footer')
+<div class="contact" id="contact">
+  <ul class="contact_info">
+    <div class="figure">
+      <span class="line"></span>
+      <p class="subtitle">Contact Info</p>
+    </div>
+    <li class="item">
+      <a href="#tel:+6282263450127" class="link">
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" fill="currentColor" class="bi bi-phone-fill" viewBox="0 0 16 16">
+            <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z" />
+          </svg>
+        </span>
+        <p class="text">+62 82263450127</p>
+      </a>
+    </li>
+    <li class="item">
+      <a href="mailto:funitur@gmail.com" class="link">
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+          </svg>
+        </span>
+        <p class="text">funitur@gmail.com</p>
+      </a>
+    </li>
+    <li class="item">
+      <a href="#" class="link">
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" fill="currentColor" viewBox="0 0 512 512">
+            <path d="M256,32C167.67,32,96,96.51,96,176c0,128,160,304,160,304S416,304,416,176C416,96.51,344.33,32,256,32Zm0,224a64,64,0,1,1,64-64A64.07,64.07,0,0,1,256,256Z" />
+          </svg>
+        </span>
+        <p class="text">Jl. Soeharto-Hatta, Bandung</p>
+      </a>
+    </li>
+  </ul>
+  <form action="" class="form">
+    <div class="field two">
+      <input type="text" name="email" placeholder="Email" />
+      <input type="text" name="username" placeholder="Username" />
+    </div>
+    <div class="field one">
+      <textarea name="message" placeholder="Message"></textarea>
+    </div>
+    <button class="btn">Send</button>
+  </form>
+</div>
+@endsection
+@endsection
+
 @if (Auth::user()->isAdmin)
-<button class="isAdmin">
-  <span class="icon">Info</span>
-</button>
-<div class="forAdmin">
+<div class="isAdmin">
+  <button class="isAdd">Add</button>
+  <button class="isRead">Read</button>
+</div>
+
+<div class="read">
   <div class="black"></div>
   <div class="form">
-    <div class="action">
-      <button class="btn" style="border: none;">
-        <span class="icon">Add</span>
-      </button>
-      <button class="close">
-        <span></span>
-        <span></span>
-      </button>
+    <div class="header_read">
+      <div class="figure">
+        <span class="line"></span>
+        <h4 class="heading">Product Data</h4>
+      </div>
+      <h4 class="subtitle">Berikut produk yang disajikan</h4>
     </div>
-    <div class="info_modal">
-      <table class="table">
-        <thead style="border-bottom: 1px solid #222;">
-          <tr>
-            <th style="width: 10%;">ID</th>
-            <th style="width: 15%;">Category</th>
-            <th style="width: 20%;">Name</th>
-            <th style="width: 15%;">Price</th>
-            <th style="width: 50%;">Desc</th>
-            <th style="text-align: center;">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          @forelse ($products as $product)
-          <tr>
-            <td>{{ $product->id }}</td>
-            <td>{{ $product->category->name }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->desc }}</td>
-            <td>{{ $product->price }}</td>
-            <td>
-              <a href="/admin/edit/{ $product->id }">Edit</a>
-              <a href="/admin/delete/{ $product->id }">Delete</a>
-            </td>
-          </tr>
-          @empty
-          <tr>
-            <td colspan="6" style="text-align: center;">No Data</td>
-          </tr>
-          @endforelse
-        </tbody>
-      </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th data-label="ID" style="width: 50px">ID</th>
+          <th data-label="Category" style="width: 100px">Category</th>
+          <th data-label="Name" style="width: 100px">Name</th>
+          <th data-label="Price" style="width: 100px">Price</th>
+          <th data-label="Desc" style="text-align: start; width: 250px">
+            Desc
+          </th>
+          <th data-label="Action" style="width: 150px">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @forelse ($products as $product)
+        <tr>
+          <td style="text-align: center">{{ $product->id }}</td>
+          <td>{{ $product->category->name }}</td>
+          <td>{{ $product->name }}</td>
+          <td style="text-align: center">{{ $product->price }}</td>
+          <td style="
+                  width: 250px;
+                  display: block;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                ">
+            {{ $product->desc }}
+          </td>
+          <td style="text-align: center">
+            <a href="#"><span class="icon">Edit</span></a>
+            <a href="#"><span class="icon">Delete</span></a>
+          </td>
+        </tr>
+        @empty
+        <tr>
+          <td colspan="6" style="text-align: center;">No Data</td>
+        </tr>
+        @endforelse
+      </tbody>
+    </table>
+    <div class="action">
+      <button class="btn" id="close">Close</button>
     </div>
   </div>
 </div>
-@endif
-@endsection
 
-@push('script')
-<script src="{{ asset('assets/js/script.js') }}"></script>
-@endpush
+<div class="create">
+  <div class="black"></div>
+  <div class="form">
+    <div class="header_read">
+      <div class="figure">
+        <span class="line"></span>
+        <p class="heading">Create Product</p>
+      </div>
+      <h4 class="subtitle">Menambahkan produk-produk terbaru</h4>
+    </div>
+    <form action="{{ route('products.store') }}" method="POST" class="validation" enctype="multipart/form-data">
+      @csrf
+      <div class="form_two">
+        <input type="text" placeholder="Name" name="name" />
+        <input type="number" placeholder="Price" name="price" />
+      </div>
+      <div class="form_one">
+        <textarea name="desc" placeholder="Description"></textarea>
+      </div>
+      <div class="form_two">
+        <input type="number" name="qty" placeholder="QTY" />
+        <select name="category_id">
+          @foreach ($categories as $category)
+          <option value="{{ $category->id }}">{{ $category->name }}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="form_one">
+        <input type="file" name="image" id="image" />
+      </div>
+      <div class="action">
+        <button name="submit" class="btn">Add</button>
+        <div class="btn" id="close">Close</div>
+      </div>
+    </form>
+  </div>
+</div>
+@endif

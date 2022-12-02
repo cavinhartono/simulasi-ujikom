@@ -1,28 +1,10 @@
 var sections = document.querySelectorAll("section[id]");
-var greating = document.querySelector(".greating");
-var isAdmin = document.querySelector(".isAdmin");
-var isAdminClose = document.querySelector(".close");
-var forAdmin = document.querySelector(".forAdmin");
 
-isAdminClose.onclick = function () {
-    forAdmin.classList.remove("active");
-};
-
-isAdmin.onclick = function () {
-    forAdmin.classList.add("active");
-};
-
-function scrollHeader() {
-    const header = document.querySelector(".header");
-    if (this.scrollY >= 650) header.classList.add("active");
-    else header.classList.remove("active");
-}
-
-function scrollSections() {
-    const y = window.pageYOffset;
+function scrollLinks() {
+    var y = window.pageYOffset;
 
     sections.forEach((element) => {
-        const height = element.offsetHeight,
+        var height = element.offsetHeight,
             top = element.offsetTop - 58,
             id = element.getAttribute("id");
 
@@ -38,5 +20,40 @@ function scrollSections() {
     });
 }
 
-window.addEventListener("scroll", scrollSections);
-window.addEventListener("scroll", scrollHeader);
+window.addEventListener("scroll", scrollLinks);
+
+var prevScroll = window.pageYOffset;
+
+window.onscroll = function () {
+    var currentScroll = window.pageYOffset;
+
+    if (prevScroll > currentScroll) {
+        document.querySelector(".header").style.top = "0";
+        document.querySelector(".header").classList.add("active");
+    } else {
+        document.querySelector(".header").style.top = "-50px";
+        document.querySelector(".header").classList.remove("active");
+    }
+    prevScroll = currentScroll;
+};
+
+var read = document.querySelector(".isRead");
+var add = document.querySelector(".isAdd");
+
+read.onclick = function () {
+    document.querySelector(".read").classList.add("active");
+};
+
+var close = document.querySelectorAll(".action #close");
+
+close.forEach((item) => {
+    item.onclick = function () {
+        document.querySelector(".read").classList.remove("active");
+        document.querySelector(".create").classList.remove("active");
+    };
+});
+
+add.onclick = function () {
+    document.querySelector("#close").classList.add("active");
+    document.querySelector(".create").classList.add("active");
+};
