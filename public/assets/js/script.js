@@ -41,6 +41,7 @@ var read = document.querySelector(".isRead");
 var add = document.querySelector(".isAdd");
 
 read.onclick = function () {
+    document.querySelector("body").style.overflow = "hidden";
     document.querySelector(".read").classList.add("active");
 };
 
@@ -48,12 +49,15 @@ var close = document.querySelectorAll(".action #close");
 
 close.forEach((item) => {
     item.onclick = function () {
+        document.querySelector("body").style.overflow = "auto";
         document.querySelector(".read").classList.remove("active");
         document.querySelector(".create").classList.remove("active");
+        document.querySelector(".update").classList.remove("active");
     };
 });
 
 add.onclick = function () {
+    document.querySelector("body").style.overflow = "hidden";
     document.querySelector("#close").classList.add("active");
     document.querySelector(".create").classList.add("active");
 };

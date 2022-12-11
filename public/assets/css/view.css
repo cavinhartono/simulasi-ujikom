@@ -4,285 +4,285 @@
 @import url("./footer.css");
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 section {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .figure {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .figure .line {
-  display: block;
-  width: 50px;
-  height: 2px;
-  background: #222;
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: #222;
 }
 
 .view {
-  position: relative;
-  padding: 100px;
+    position: relative;
+    padding: 100px;
 }
 
 .view .figure {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .center_content {
-  position: relative;
-  width: 100%;
-  gap: 100px;
-  display: flex;
-  align-items: center;
+    position: relative;
+    width: 100%;
+    gap: 100px;
+    display: flex;
+    align-items: center;
 }
 
 .center_content .figure_caption {
-  position: relative;
+    position: relative;
 }
 
 .figure_caption .breakside a {
-  text-decoration: none;
-  position: relative;
-  color: var(--black-secondary);
-  font-size: var(--font-small);
+    text-decoration: none;
+    position: relative;
+    color: var(--black-secondary);
+    font-size: var(--font-small);
 }
 
 .figure_caption .product {
-  position: relative;
-  width: 100%;
-  margin: 15px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .figure_caption .product::before {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #ddd;
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #ddd;
 }
 
 .figure_caption .product .left_side .heading {
-  color: var(--black-primary);
-  font-size: 48px;
-  font-weight: 700;
+    color: var(--black-primary);
+    font-size: 48px;
+    font-weight: 700;
 }
 
 .figure_caption .product .right_side .rating {
-  gap: 8px;
-  display: flex;
-  align-items: center;
+    gap: 8px;
+    display: flex;
+    align-items: center;
 }
 
 .figure_caption .product .right_side .rating svg {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .figure_caption .action {
-  position: relative;
-  width: 300px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
+    position: relative;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .figure_caption .action input {
-  outline: none;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  position: relative;
-  width: 50px;
-  padding: 10px;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+    width: 50px;
+    padding: 10px;
 }
 
 .figure_caption .action .btn {
-  outline: none;
-  border: none;
-  background: var(--black-primary);
-  color: var(--white-primary);
-  position: relative;
-  width: 150px;
-  padding: 10px;
-  border-radius: 4px;
-  font-size: var(--font-small);
+    outline: none;
+    border: none;
+    background: var(--black-primary);
+    color: var(--white-primary);
+    position: relative;
+    width: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: var(--font-small);
 }
 
 .figure_caption .category {
-  margin: 15px 0;
-  color: var(--black-secondary);
+    margin: 15px 0;
+    color: var(--black-secondary);
 }
 
 .figure_caption .category .link {
-  text-decoration: none;
-  position: relative;
-  color: var(--black-primary);
+    text-decoration: none;
+    position: relative;
+    color: var(--black-primary);
 }
 
 .figure_caption .text {
-  color: var(--black-primary);
-  margin: 25px 0;
-  text-align: justify;
-  font-size: var(--font-small);
-  font-weight: 400;
+    color: var(--black-primary);
+    margin: 25px 0;
+    text-align: justify;
+    font-size: var(--font-small);
+    font-weight: 400;
 }
 
 .info {
-  position: relative;
-  width: 100%;
-  padding: 100px;
-  gap: 15px;
-  display: flex;
-  justify-content: space-between;
+    position: relative;
+    width: 100%;
+    padding: 100px;
+    gap: 15px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .info .review {
-  position: relative;
-  max-width: 600px;
+    position: relative;
+    max-width: 600px;
 }
 
 .info .review .card {
-  position: relative;
-  max-width: 650px;
-  gap: 30px;
-  display: flex;
-  flex-direction: column;
+    position: relative;
+    max-width: 650px;
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .info .review .card .item {
-  list-style: none;
-  width: 100%;
-  padding: 25px 40px;
-  gap: 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--white-primary);
-  box-shadow: var(--boxShadow-primary);
+    list-style: none;
+    width: 100%;
+    padding: 25px 40px;
+    gap: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white-primary);
+    box-shadow: var(--boxShadow-primary);
 }
 
 .info .review .card .item .photo {
-  max-width: 80px;
-  height: auto;
-  border-radius: 100%;
+    max-width: 80px;
+    height: auto;
+    border-radius: 100%;
 }
 
 .info .review .card .item .rating {
-  display: flex;
-  gap: 8px;
+    display: flex;
+    gap: 8px;
 }
 
 .info .review .card .item .rating svg {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .info .review .card .item .review_info .heading {
-  font-size: var(--font-small);
-  font-weight: 400;
-  color: var(--black-primary);
+    font-size: var(--font-small);
+    font-weight: 400;
+    color: var(--black-primary);
 }
 
 .info .review .card .item .review_info .text {
-  margin-top: 8px;
-  font-size: 1em;
-  font-weight: 400;
-  text-align: justify;
-  color: var(--black-secondary);
+    margin-top: 8px;
+    font-size: 1em;
+    font-weight: 400;
+    text-align: justify;
+    color: var(--black-secondary);
 }
 
 .info .product_desc {
-  max-width: 600px;
-  padding: 20px;
+    width: 600px;
+    padding: 20px;
 }
 
 .info .product_desc .description .text {
-  margin: 15px 0;
-  text-align: justify;
-  font-size: var(--font-small);
-  font-weight: 400;
+    margin: 15px 0;
+    text-align: justify;
+    font-size: var(--font-small);
+    font-weight: 400;
 }
 
 .footer .contact {
-  position: relative;
-  width: 1200px;
-  padding: 60px;
-  background: var(--white-primary);
-  box-shadow: var(--boxShadow-secondary);
-  transform: translateY(-50%);
+    position: relative;
+    width: 1200px;
+    padding: 60px;
+    background: var(--white-primary);
+    box-shadow: var(--boxShadow-secondary);
+    transform: translateY(-50%);
 }
 
 .form {
-  position: relative;
+    position: relative;
 }
 
 .form .field {
-  position: relative;
-  gap: 15px;
-  width: 100%;
+    position: relative;
+    gap: 15px;
+    width: 100%;
 }
 
 .form .field.two {
-  display: flex;
-  align-items: center;
-  width: 150px;
+    display: flex;
+    align-items: center;
+    width: 150px;
 }
 
 .form .field.two input {
-  padding: 8px;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .form .field.one textarea {
-  margin-top: 15px;
-  padding: 8px;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+    margin-top: 15px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .form .field.two svg {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .form .btn {
-  text-decoration: none;
-  position: relative;
-  width: 100px;
-  height: 40px;
-  background: var(--black-primary);
-  color: var(--white-primary);
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 300;
-  transition: 0.3s;
+    text-decoration: none;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    background: var(--black-primary);
+    color: var(--white-primary);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 300;
+    transition: 0.3s;
 }
 
 .footer_text {
-  position: absolute;
-  bottom: 25px;
-  color: var(--white-primary);
+    position: absolute;
+    bottom: 25px;
+    color: var(--white-primary);
 }
 
 .footer_text .text {
-  font-size: var(--font-small);
-  font-weight: 300;
+    font-size: var(--font-small);
+    font-weight: 300;
 }

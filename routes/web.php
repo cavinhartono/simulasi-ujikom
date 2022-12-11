@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ProductsController::class, 'index']);
+Route::get('/edit/{id}', [ProductsController::class, 'edit']);
+Route::get('/view/{id}', [ProductsController::class, 'view']);
 Route::post('/store', [ProductsController::class, 'store'])->name('products.store');
-
+Route::post('/update', [ProductsController::class, 'update'])->name('products.update');
 Route::get('/auth', [AuthController::class, 'index']);
 Route::get('/auth/logout', [AuthController::class, 'logout']);
 Route::post('/auth/login', [AuthController::class, 'login']);

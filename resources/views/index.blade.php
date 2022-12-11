@@ -114,7 +114,7 @@ Homepage
               <h2 class="category">{{ $product->category->name }}</h2>
               <h2 class="heading title">{{ $product->name }}</h2>
             </div>
-            <p class="price">{{ $product->price }}</p>
+            <p class="price">@rupiah($product->price)</p>
           </div>
         </a>
       </li>
@@ -241,8 +241,8 @@ Homepage
         @forelse ($products as $product)
         <tr>
           <td style="text-align: center">{{ $product->id }}</td>
-          <td>{{ $product->category->name }}</td>
-          <td>{{ $product->name }}</td>
+          <td style="text-transform: capitalize;">{{ $product->category->name }}</td>
+          <td style="text-transform: capitalize;">{{ $product->name }}</td>
           <td style="text-align: center">{{ $product->price }}</td>
           <td style="
                   width: 250px;
@@ -254,8 +254,8 @@ Homepage
             {{ $product->desc }}
           </td>
           <td style="text-align: center">
-            <a href="#"><span class="icon">Edit</span></a>
-            <a href="#"><span class="icon">Delete</span></a>
+            <a href="/edit/{{ $product->id }}" class="isEdit"><span class="icon">Edit</span></a>
+            <a href="#" class="isDelete"><span class="icon">Delete</span></a>
           </td>
         </tr>
         @empty
@@ -265,6 +265,11 @@ Homepage
         @endforelse
       </tbody>
     </table>
+    @if($products->hasPages())
+    <div class="card_footer">
+      {{ $products->links() }}
+    </div>
+    @endif
     <div class="action">
       <button class="btn" id="close">Close</button>
     </div>
@@ -289,6 +294,45 @@ Homepage
       </div>
       <div class="form_one">
         <textarea name="desc" placeholder="Description"></textarea>
+      </div>
+      <div class="form_two">
+        <input type="number" name="qty" placeholder="QTY" />
+        <select name="category_id">
+          @foreach ($categories as $category)
+          <option value="{{ $category->id }}">{{ $category->name }}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="form_one">
+        <input type="file" name="image" id="image" />
+      </div>
+      <div class="action">
+        <button name="submit" class="btn">Add</button>
+        <div class="btn" id="close">Close</div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="update">
+  <div class="black"></div>
+  <div class="form">
+    <div class="header_read">
+      <div class="figure">
+        <span class="line"></span>
+        <p class="heading">Edit Product</p>
+      </div>
+      <h4 class="subtitle">Menyunting sebuah data</h4>
+    </div>
+    <form action="{{ route('products.update') }}" method="POST" class="validation" enctype="multipart/form-data">
+      @method('PUT')
+      @csrf
+      <div class="form_two">
+        <input type="text" placeholder="Name" name="name" value="{{ $product->name }}" />
+        <input type="number" placeholder="Price" name="price" value="{{ $product->price }}" />
+      </div>
+      <div class="form_one">
+        <textarea name="desc" placeholder="Description">{{ $product->desc }}</textarea>
       </div>
       <div class="form_two">
         <input type="number" name="qty" placeholder="QTY" />

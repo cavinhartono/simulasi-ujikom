@@ -40,7 +40,7 @@
       </ul>
       <ul class="action">
         <li class="item">
-          <a href="#" class="link">
+          <a href="#" class="link" onclick="document.querySelector('.profile').classList.toggle('active');">
             <span class="logo">
               <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" fill="currentColor" viewBox="0 0 512 512">
                 <path d="M256,48C141.31,48,48,141.31,48,256s93.31,208,208,208,208-93.31,208-208S370.69,48,256,48Zm2,96a72,72,0,1,1-72,72A72,72,0,0,1,258,144Zm-2,288a175.55,175.55,0,0,1-129.18-56.6C135.66,329.62,215.06,320,256,320s120.34,9.62,129.18,55.39A175.52,175.52,0,0,1,256,432Z" />
@@ -48,6 +48,76 @@
             </span>
           </a>
         </li>
+        <div class="profile">
+          <div class="profile_content">
+            <div class="profile_data">
+              <div class="img">
+                <img src="{{ asset('assets/img/download.jpg') }}" class="photo">
+              </div>
+              <div class="caption_img">
+                <?php
+
+                use Illuminate\Support\Facades\Auth;
+
+                $firstName = explode(' ', trim(Auth::user()->name))[0];
+                $email = Auth::user()->email;
+
+                ?>
+
+                <div class="profile_name">
+                  <h4 class="heading">@greating({{$firstName}})</h4>
+                  <h4 class="subtitle" style="font-weight: 500;">{{ $email }}</h4>
+                </div>
+              </div>
+            </div>
+            <ul class="profile_menu">
+              <li class="list">
+                <a href="/auth/profile" class="link">
+                  <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" fill="currentColor" viewBox="0 0 512 512">
+                      <path d="M256,64C150,64,64,150,64,256s86,192,192,192,192-86,192-192S362,64,256,64Z" style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:32px" />
+                      <polyline points="256 128 256 272 352 272" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                    </svg>
+                  </span>
+                  <span class="title">Wishlist</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="/auth/password" class="link">
+                  <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="auto" height="auto" viewBox="0 0 512 512">
+                      <path d="M336,208V113a80,80,0,0,0-160,0v95" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                      <rect x="96" y="208" width="320" height="272" rx="48" ry="48" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                    </svg>
+                  </span>
+                  <span class="title">Password</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="/auth/profile" class="link">
+                  <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" fill="currentColor" viewBox="0 0 512 512">
+                      <path d="M262.29,192.31a64,64,0,1,0,57.4,57.4A64.13,64.13,0,0,0,262.29,192.31ZM416.39,256a154.34,154.34,0,0,1-1.53,20.79l45.21,35.46A10.81,10.81,0,0,1,462.52,326l-42.77,74a10.81,10.81,0,0,1-13.14,4.59l-44.9-18.08a16.11,16.11,0,0,0-15.17,1.75A164.48,164.48,0,0,1,325,400.8a15.94,15.94,0,0,0-8.82,12.14l-6.73,47.89A11.08,11.08,0,0,1,298.77,470H213.23a11.11,11.11,0,0,1-10.69-8.87l-6.72-47.82a16.07,16.07,0,0,0-9-12.22,155.3,155.3,0,0,1-21.46-12.57,16,16,0,0,0-15.11-1.71l-44.89,18.07a10.81,10.81,0,0,1-13.14-4.58l-42.77-74a10.8,10.8,0,0,1,2.45-13.75l38.21-30a16.05,16.05,0,0,0,6-14.08c-.36-4.17-.58-8.33-.58-12.5s.21-8.27.58-12.35a16,16,0,0,0-6.07-13.94l-38.19-30A10.81,10.81,0,0,1,49.48,186l42.77-74a10.81,10.81,0,0,1,13.14-4.59l44.9,18.08a16.11,16.11,0,0,0,15.17-1.75A164.48,164.48,0,0,1,187,111.2a15.94,15.94,0,0,0,8.82-12.14l6.73-47.89A11.08,11.08,0,0,1,213.23,42h85.54a11.11,11.11,0,0,1,10.69,8.87l6.72,47.82a16.07,16.07,0,0,0,9,12.22,155.3,155.3,0,0,1,21.46,12.57,16,16,0,0,0,15.11,1.71l44.89-18.07a10.81,10.81,0,0,1,13.14,4.58l42.77,74a10.8,10.8,0,0,1-2.45,13.75l-38.21,30a16.05,16.05,0,0,0-6.05,14.08C416.17,247.67,416.39,251.83,416.39,256Z" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                    </svg>
+                  </span>
+                  <span class="title">Settings</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="/auth/logout" class="link">
+                  <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" fill="currentColor" viewBox="0 0 512 512">
+                      <path d="M304,336v40a40,40,0,0,1-40,40H104a40,40,0,0,1-40-40V136a40,40,0,0,1,40-40H256c22.09,0,48,17.91,48,40v40" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                      <polyline points="368 336 448 256 368 176" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                      <line x1="176" y1="256" x2="432" y2="256" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                    </svg>
+                  </span>
+                  <span class="title">Logout</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
         <li class="item">
           <a href="#" class="link">
             <span class="logo">

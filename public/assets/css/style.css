@@ -2,6 +2,10 @@
 @import url("./theme.css");
 @import url("./header.css");
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -599,7 +603,8 @@ table th {
 }
 
 .read,
-.create {
+.create,
+.update {
     position: relative;
     display: flex;
     justify-content: center;
@@ -686,13 +691,15 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .read.active,
+.update.active,
 .create.active {
     visibility: visible;
     opacity: 1;
 }
 
 .read .form,
-.create .form {
+.create .form,
+.update .form {
     position: fixed;
     top: 25px;
     left: calc(800px / 50%);

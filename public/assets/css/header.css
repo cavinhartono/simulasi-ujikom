@@ -12,6 +12,11 @@
     background: var(--white-primary);
 }
 
+.header_logo {
+    display: flex;
+    gap: 8px;
+}
+
 .header_logo .title {
     font-weight: 700;
     font-style: italic;
@@ -24,12 +29,14 @@
     gap: 15px;
 }
 
-.header .nav .item {
+.header .nav .item,
+.profile_menu .list {
     position: relative;
     list-style: none;
 }
 
-.header .nav .item.active .link {
+.header .nav .item.active .link,
+.profile_menu .list:hover .link {
     color: var(--black-primary);
 }
 
@@ -44,7 +51,8 @@
     border-radius: 12px;
 }
 
-.header .nav .item .link {
+.header .nav .item .link,
+.profile_menu .list .link {
     text-decoration: none;
     color: var(--black-secondary);
 }
@@ -66,4 +74,67 @@ svg {
     width: 24px;
     height: 24px;
     color: var(--black-secondary);
+}
+
+.profile {
+    position: fixed;
+    top: 100px;
+    right: 0;
+    padding: 40px;
+    background: var(--white-primary);
+    box-shadow: var(--boxShadow-secondary);
+    border-radius: 12px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.profile.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.profile_content {
+    position: relative;
+}
+
+.profile_data {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile_content .img {
+    position: relative;
+    max-width: 50px;
+    height: 50px;
+    border-radius: 12px;
+}
+
+.profile_content .img .photo {
+    height: 100%;
+    border-radius: 12px;
+}
+
+.profile_content .caption_img .heading b {
+    font-size: var(--font-reguler);
+}
+
+.profile_menu {
+    position: relative;
+    margin: 25px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile_menu .list {
+    gap: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.profile_menu .list .link .title {
+    text-transform: lowercase;
+    font-size: var(--font-small);
 }
