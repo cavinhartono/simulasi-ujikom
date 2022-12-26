@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductStoreRequest;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 class ProductsController extends Controller
 {
     public function index()
     {
-        $productList = Product::with('category')->paginate(10);
+        $carts = Cart::with('product')->where('user_id', Auth::user()->id)->paginate(4);
+        $productList = Product::with('category')->paginate(5);
         $products = Product::with('category')->orderBy('created_at', 'desc')->limit(4)->get();
         $categories = Category::all();
-        return view('index', compact(['products', 'productList', 'categories']));
+        return view('index', compact(['products', 'productList', 'categories', 'carts']));
     }
 
     public function store(ProductStoreRequest $request)
@@ -40,9 +44,11 @@ class ProductsController extends Controller
         return view('edit', compact(['product', 'categories']));
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
-        # code...
+        $getProduct = Product::find($id);
+        $getProduct->update($request->except(['_token', 'submit']));
+        return redirect('/');
     }
 
     public function delete($id)
@@ -55,6 +61,7 @@ class ProductsController extends Controller
     public function view($id)
     {
         $product = Product::find($id);
+        $reviews = Review::all();
         return view('view', compact(['product']));
     }
 }

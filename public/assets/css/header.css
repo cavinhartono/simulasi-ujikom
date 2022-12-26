@@ -76,7 +76,8 @@ svg {
     color: var(--black-secondary);
 }
 
-.profile {
+.profile,
+.carts {
     position: fixed;
     top: 100px;
     right: 0;
@@ -89,7 +90,8 @@ svg {
     transition: 0.3s;
 }
 
-.profile.active {
+.profile.active,
+.carts.active {
     visibility: visible;
     opacity: 1;
 }
@@ -102,6 +104,16 @@ svg {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.profile_menu .link {
+    display: flex;
+    gap: 12px;
+}
+
+.profile_menu .icon {
+    display: flex;
+    align-items: center;
 }
 
 .profile_content .img {
@@ -125,7 +137,7 @@ svg {
     margin: 25px 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
 
 .profile_menu .list {
