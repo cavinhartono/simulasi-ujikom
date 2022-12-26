@@ -238,7 +238,7 @@ Homepage
         </tr>
       </thead>
       <tbody>
-        @forelse ($products as $product)
+        @forelse ($productList as $product)
         <tr>
           <td style="text-align: center">{{ $product->id }}</td>
           <td style="text-transform: capitalize;">{{ $product->category->name }}</td>
@@ -265,9 +265,9 @@ Homepage
         @endforelse
       </tbody>
     </table>
-    @if($products->hasPages())
+    @if($productList->hasPages())
     <div class="card_footer">
-      {{ $products->links() }}
+      {{ $productList->links() }}
     </div>
     @endif
     <div class="action">

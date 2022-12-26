@@ -32,8 +32,16 @@ class DatabaseSeeder extends Seeder
             'address' => 'Jl. Soeharto-Hatta',
             'name' => 'Admin',
         ]);
-        // $this->call([
-        //     ProductSeeders::class,
-        // ]);
+        User::insert([
+            'email' => 'user@gmail.com',
+            'password' => Hash::make('123456'),
+            'phone' => '081234561123',
+            'address' => 'Jl. Soeharto-Hatta',
+            'name' => 'User Gaming',
+        ]);
+
+        $this->call([
+            ProductSeeders::class,
+        ]);
     }
 }

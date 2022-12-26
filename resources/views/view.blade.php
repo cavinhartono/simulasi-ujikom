@@ -23,7 +23,10 @@ P-{{ $product->id }}
         </div>
         <div class="product">
           <div class="left_side">
-            <h2 class="heading">{{ $product->name }}</h2>
+            <?php
+            $name = explode(' ', trim($product->name))[0];
+            ?>
+            <h2 class="heading">{{ $name }}</h2>
             <p class="price">@rupiah($product->price)</p>
           </div>
           <div class="right_side">
@@ -109,7 +112,7 @@ P-{{ $product->id }}
             <path d="M496,203.3H312.36L256,32,199.64,203.3H16L166.21,308.7,107.71,480,256,373.84,404.29,480,345.68,308.7Z" />
           </svg>
         </span>
-        <input type="number" max="5" name="rating" placeholder="Rating" />
+        <input type="number" min="0" max="5" name="rating" placeholder="Rating" />
       </div>
       <div class="field one">
         <textarea name="message" placeholder="Message"></textarea>

@@ -15,13 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ProductsController::class, 'index']);
-Route::get('/edit/{id}', [ProductsController::class, 'edit']);
-Route::get('/view/{id}', [ProductsController::class, 'view']);
-Route::post('/store', [ProductsController::class, 'store'])->name('products.store');
-Route::post('/update', [ProductsController::class, 'update'])->name('products.update');
-Route::get('/auth', [AuthController::class, 'index']);
-Route::get('/auth/logout', [AuthController::class, 'logout']);
-Route::post('/auth/login', [AuthController::class, 'login']);
-Route::post('/auth/register', [AuthController::class, 'register']);
-Route::delete('/admin/delete/{$id}', [ProductsController::class, 'delete']);
+Route::controller(AuthController::class)->group(function () {
+  Route::get('/auth', [AuthController::class, 'index']);
+  Route::get('/auth/logout', [AuthController::class, 'logout']);
+  Route::post('/auth/login', [AuthController::class, 'login']);
+  Route::post('/auth/register', [AuthController::class, 'register']);
+});
+
+Route::middleware('IsLogin')->group(function () {
+  Route::controller(ProductsController::class)->group(function () {
+    Route::get('/', [ProductsController::class, 'index']);
+    Route::get('/edit/{id}', [ProductsController::class, 'edit']);
+    Route::get('/view/{id}', [ProductsController::class, 'view']);
+    Route::post('/store', [ProductsController::class, 'store'])->name('products.store');
+    Route::post('/update', [ProductsController::class, 'update'])->name('products.update');
+    Route::delete('/admin/delete/{$id}', [ProductsController::class, 'delete']);
+  });
+});

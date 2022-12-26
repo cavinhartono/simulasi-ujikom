@@ -11,9 +11,10 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category')->paginate(10);
+        $productList = Product::with('category')->paginate(10);
+        $products = Product::with('category')->orderBy('created_at', 'desc')->limit(4)->get();
         $categories = Category::all();
-        return view('index', compact(['products', 'categories']));
+        return view('index', compact(['products', 'productList', 'categories']));
     }
 
     public function store(ProductStoreRequest $request)
