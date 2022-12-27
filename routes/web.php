@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,11 +25,15 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::middleware('IsLogin')->group(function () {
   Route::controller(ProductsController::class)->group(function () {
-    Route::get('/', [ProductsController::class, 'index']);
-    Route::get('/edit/{id}', [ProductsController::class, 'edit']);
-    Route::get('/view/{id}', [ProductsController::class, 'view']);
-    Route::post('/store', [ProductsController::class, 'store'])->name('products.store');
-    Route::post('/update', [ProductsController::class, 'update'])->name('products.update');
-    Route::delete('/admin/delete/{$id}', [ProductsController::class, 'delete']);
+    Route::get('/', 'index');
+    Route::get('/edit/{id}', 'edit');
+    Route::get('/view/{id}', 'view');
+    Route::post('/store', 'store')->name('products.store');
+    Route::post('/update', 'update')->name('products.update');
+    Route::delete('/admin/delete/{$id}', 'delete');
+  });
+  Route::controller(CartController::class)->group(function () {
+    Route::get('/cart', 'index');
+    Route::delete('/cart/{$id}/delete', 'destroy');
   });
 });

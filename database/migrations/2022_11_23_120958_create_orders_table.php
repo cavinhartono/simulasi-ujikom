@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->enum('payment_status', ['nothing', 'process', 'success'])->default('nothing');
+            $table->string('payment_method')->nullable();
             $table->integer('qty');
+            $table->integer('price');
             $table->timestamps();
         });
     }

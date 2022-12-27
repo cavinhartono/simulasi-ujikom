@@ -18,7 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreignId('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->integer('rating');
+            $table->float('rating');
+            $table->integer('qty');
             $table->text('desc');
             $table->timestamps();
         });
